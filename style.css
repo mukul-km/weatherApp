@@ -1,4 +1,18 @@
-/*  CSS Reset  */
+:root {
+  --primary-color: hsl(212, 100%, 50%);
+  --secondary-color: hsl(0, 0%, 50%);
+
+  --primary-click-color: hsl(212, 100%, 40%);
+  --secondary-click-color: hsl(0, 0%, 40%);
+
+  --bg-color: hsl(212, 100%, 95%);
+
+  --text-white: hsl(0, 0%, 100%);
+
+  --light-grey: hsl(0, 0%, 80%);
+}
+
+/* CSS Reset */
 *,
 *::before,
 *::after {
@@ -25,89 +39,177 @@ textarea {
 }
 
 html {
-  font-family: Arial, sans-serif;
   font-size: 16px;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  background-color: hsl(0, 0%, 95%);
-  margin: 0;
+  background-color: var(--bg-color);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--primary-color);
+  color: var(--text-white);
+  text-align: center;
+  padding: 15px 0;
+  z-index: 1;
+  box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.5);
+}
+
+main {
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Search Box Section */
+.search-box {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.search-box * {
+  margin-bottom: 16px;
+}
+.search-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+#search-input {
+  font-size: 1rem;
+  padding: 8px 10px;
+  border: 2px solid var(--light-grey);
+  border-radius: 5px;
+}
+
+#search-btn {
+  font-size: 1rem;
+  padding: 10px 0;
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+#search-btn:active {
+  background-color: var(--primary-click-color);
+  transform: scale(0.9);
+}
+
+.separator {
+  height: 2px;
+  position: relative;
+  background-color: var(--light-grey);
+}
+
+.separator::before {
+  content: "or";
+  color: var(--secondary-color);
+  background-color: var(--bg-color);
+  position: absolute;
+  padding: 0 5px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#location-btn {
+  font-size: 1rem;
+  padding: 10px 0;
+  background-color: var(--secondary-color);
+  color: var(--text-white);
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+#location-btn:active {
+  background-color: var(--secondary-click-color);
+  transform: scale(0.9);
+}
+
+/* Current Weather Section */
+.current-weather {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  padding: 20px 15px 20px 10px;
+  color: var(--text-white);
+  margin-bottom: 24px;
+}
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+  margin-right: 10px;
+}
+.weather-info h2 {
+  font-size: 1.1rem;
+}
+.weather-info h4 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+.weather-img {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.weatherForm {
-  margin: 20px;
+.weather-img img {
+  width: 110px;
 }
 
-.cityInput {
-  padding: 10px;
-  font-size: 2rem;
-  font-weight: bold;
-  border: 2px solid hsla(0, 0%, 20%, 0.3);
-  border-radius: 10px;
-  margin: 10px;
-  width: 350px;
+.weather-img h4 {
+  font-size: 0.9rem;
 }
 
-button[type="submit"] {
-  padding: 10px 20px;
-  font-weight: bold;
-  font-size: 2rem;
-  background-color: hsl(122, 39%, 50%);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.forecast-weather {
+  width: 100%;
 }
 
-button[type="submit"]:hover {
-  background-color: hsl(122, 39%, 40%);
+.forecast-weather h2 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
 }
 
-.card {
-  background: linear-gradient(180deg, hsl(210, 100%, 75%), hsl(40, 100%, 75%));
-  padding: 50px;
-  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.5);
-  border-radius: 15px;
-  min-width: 300px;
+.forecast-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.forecast-cards .card {
+  width: calc(50% - 5px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--secondary-color);
+  color: var(--text-white);
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+.forecast-cards .card h2 {
+  margin: 0;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
+.forecast-cards .card img {
+  width: 110px;
 }
 
-p {
-  font-weight: bold;
-  font-size: 1.25rem;
-  margin-bottom: 15px;
-}
-.tempDisplay {
-  font-size: 2rem;
+.forecast-cards .card h4 {
+  padding-bottom: 8px;
 }
 
-.descDisplay {
-  font-size: 1.5rem;
-}
-
-.descDisplay,
-.humidityDisplay {
-  color: hsla(0, 0%, 0%, 0.7);
-}
-
-.weatherEmoji {
-  font-size: 5rem;
-}
-
-.errorDisplay {
-  font-size: 1.75rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: hsla(0, 100%, 50%, 0.8);
+.forecast-cards .card h4:last-child {
+  padding-bottom: 0px;
 }
