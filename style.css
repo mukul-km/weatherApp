@@ -86,6 +86,7 @@ main {
   border: 2px solid var(--light-grey);
   border-radius: 5px;
   margin-bottom: 16px;
+  background-color: white;
 }
 
 #search-btn {
